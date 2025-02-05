@@ -1,6 +1,10 @@
 import { useState } from "react";
 
-const FeedbackCount = ({ label, count }) => {
+const Button = ({ onClick, text }) => {
+  return <button onClick={onClick}>{text}</button>;
+};
+
+const StatisticLine = ({ label, count }) => {
   return (
     <p>
       {label}: {count}
@@ -52,13 +56,13 @@ const App = () => {
   return (
     <div>
       <h1>Give feedback</h1>
-      <button onClick={() => setGood(good + 1)}>Good</button>
-      <button onClick={() => setNeutral(neutral + 1)}>Neutral</button>
-      <button onClick={() => setBad(bad + 1)}>Bad</button>
+      <Button onClick={() => setGood(good + 1)} text="Good" />
+      <Button onClick={() => setNeutral(neutral + 1)} text="Neutral" />
+      <Button onClick={() => setBad(bad + 1)} text="Bad" />
 
-      <FeedbackCount label="Good" count={good} />
-      <FeedbackCount label="Neutral" count={neutral} />
-      <FeedbackCount label="Bad" count={bad} />
+      <StatisticLine label="Good" count={good} />
+      <StatisticLine label="Neutral" count={neutral} />
+      <StatisticLine label="Bad" count={bad} />
 
       <Statistics good={good} neutral={neutral} bad={bad} />
     </div>
