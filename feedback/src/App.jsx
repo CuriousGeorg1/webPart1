@@ -1,5 +1,13 @@
 import { useState } from "react";
 
+const FeedbackCount = ({ label, count }) => {
+  return (
+    <p>
+      {label}: {count}
+    </p>
+  );
+};
+
 const TotalFeedback = ({ good, neutral, bad }) => {
   return <p>Total feedback: {good + neutral + bad}</p>;
 };
@@ -18,14 +26,13 @@ const PositivePercentage = ({ good, neutral, bad }) => {
   return <p>Positive percentage: {(good / (good + neutral + bad)) * 100}%</p>;
 };
 
-const FeedbackCount = ({ label, count }) => {
-  return (
-    <p>
-      {label}: {count}
-    </p>
-  );
-};
 const Statistics = ({ good, neutral, bad }) => {
+  console.log(good, neutral, bad);
+  const totalFeedback = good + neutral + bad;
+
+  if (totalFeedback === 0) {
+    return <p>No feedback given</p>;
+  }
   return (
     <div>
       <h1>Statistics</h1>
