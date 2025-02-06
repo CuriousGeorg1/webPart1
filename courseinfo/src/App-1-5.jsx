@@ -22,6 +22,7 @@ const App = () => {
   };
 
   const Header = ({ course }) => {
+    console.log("Course: ", course);
     return (
       <header>
         <h1>{course.name}</h1>
@@ -30,13 +31,15 @@ const App = () => {
   };
 
   const Content = ({ course }) => {
-    const parts = course.parts;
     return (
-      <div>
-        {parts.map((part, index) => (
-          <Part key={index} name={part.name} exercises={part.exercises} />
-        ))}
-      </div>
+      <>
+        {course.parts.map(
+          (part, index) => (
+            console.log(part),
+            (<Part key={index} name={part.name} exercises={part.exercises} />)
+          )
+        )}
+      </>
     );
   };
 
